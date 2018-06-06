@@ -1,0 +1,69 @@
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+
+          <!--Link naar Home-->
+            <li>
+                <a href="{{ path('homepage') }}"><i class="glyphicon glyphicon-home"></i>Home</a>
+            </li>
+
+            <!--Kopje Artikelen-->
+            <li>
+                <a href="#"><i class="fa fa-tags fa-fw"></i>Artikelen<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <!--Link naar Overzicht Artikelen-->
+                    <li>
+                        <a href="{{ path('alleArtikelen') }}"><i class="fa fa-list-alt fa-fw"></i>Overzicht Artikelen</a>
+                    </li>
+                    <!--Link naar Nieuwe Bestelling-->
+                    <li>
+                        <a href="{{ path('nieuwArtikel') }}"><i class="fa fa-tag fa-fw"></i>Nieuw Artikel</a>
+                    </li>
+                </ul>
+            </li>
+
+            <!--Kopje Bestellingen-->
+            <li>
+                <a href="#"><i class="fa fa-book fa-fw"></i> Bestellingen<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <!--Link naar Overzicht Bestellingen-->
+                    <li>
+                        <a href="{{ path('alleBestellingen') }}"><i class="fa fa-list-alt fa-fw"></i>Overzicht Bestellingen</a>
+                    </li>
+                    <!--Link naar Nieuwe Bestelling-->
+                    <li>
+                        <a href="{{ path('bestelopdrachtNieuw') }}"><i class="fa fa-file fa-fw"></i>Nieuwe Bestelling</a>
+                    </li>
+                </ul>
+            </li>
+
+            <!--Kopje Ontvangst-->
+            <li>
+                <a href="#"><i class="fa fa-truck fa-fw"></i>Ontvangst<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <!--Link naar Overzicht Nog te ontvangen-->
+                    <li>
+                        <a href="{{ path('teOntvangenBestelregels') }}"><i class="fa fa-list-alt fa-fw"></i>Nog te ontvangen</a>
+                    </li>
+                    <!--Link naar goedgekeurde bestellingen-->
+                    <li>
+                        <a href="{{ path('goedgekeurdeBestellingen') }}"><i class="fa fa-list-alt fa-fw"></i>Ontvangen Goederen</a>
+                    </li>
+                    <!--Link naar Overzicht Ontvangen-->
+                    <li>
+                        <a href="{{ path('afgekeurdeBestellingen') }}"><i class="fa fa-list-alt fa-fw"></i>Afgekeurde Goederen</a>
+                    </li>
+                </ul>
+            </li>
+
+            <!--Kopje zoekenartikel-->
+          <li>
+              <a href="{{ path('zoekenArtikel') }}"><i class="fa fa-search fa-fw"></i>Zoeken<span class="fa arrow"></span></a>
+          </li>
+
+        </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+</div>
+<!-- /.navbar-static-side -->
+</nav>

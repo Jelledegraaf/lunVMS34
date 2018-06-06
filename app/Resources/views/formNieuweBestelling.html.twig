@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+<h3>Nieuwe bestelling<h3>
+</div>
+<div class="panel-body">
+<form method="post" action="">
+    {{ form_widget(form) }}
+    <input class="btn btn-default" type="submit" value="Bestelling maken">
+    <input class="btn btn-default" type="button" onclick="javascript:history.back()" value="Annuleren">
+</form>
+</div>
+</div>
+{% endblock %}

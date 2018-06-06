@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+<h3>Artikel Zoeken<h3>
+</div>
+<div class="panel-body">
+  <form method="post" action="">
+      <p>Hier kunt u zoeken op omschrijving.</p>
+
+      {{ form_widget(form) }}
+
+      <input class="btn btn-default" type="submit">
+
+      <a href="javascript:history.back()">Annuleren</a>
+
+  </form>
+</div>
+</div>
+
+{% endblock %}

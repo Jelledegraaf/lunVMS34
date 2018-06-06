@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+<h3>Bestelde artikelen</h3>
+</div>
+<div class="panel-body">
+<div class="table-responsive">
+<table class="table table-striped">
+    <tr>
+        <th style="width: 10%">Artikel Nr.</th>
+        <th>Omschrijving</th>
+        <th>Aantal</th>
+    </tr>
+
+	{% for Bestelregel in Bestelregels %}
+
+      <tr>
+         <td style="width: 10%">{{Bestelregel.artikelnummer}}</td>
+          <td>
+
+          {% for Artikel in Artikelen %}
+          {% if Bestelregel.artikelnummer.artikelnummer == Artikel.artikelnummer %}
+          {{Artikel.omschrijving}}
+          {% endif %}
+          {% endfor %}
+          </td>
+          <td>{{Bestelregel.aantal}}</td>
+      </tr>
+
+    {% endfor %}
+
+</table>
+</div>
+</div>
+</div>
+
+{% endblock %}

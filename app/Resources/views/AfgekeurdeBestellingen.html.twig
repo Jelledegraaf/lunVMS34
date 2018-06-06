@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+<h3>Afgekeurde Bestellingen</h3>
+</div>
+<div class="panel-body">
+<div class="table-responsive">
+<table class="table table-striped">
+    <tr>
+       <th>Bestelordernummer</th>
+        <th style="width: 10%">Artikel Nr.</th>
+        <th>Omschrijving</th>
+        <th>Leverancier</th>
+        <th>Hoeveelheid</th>
+        <th>Kwaliteit</th>
+        <th>Afgekeurd?</th>
+        <th>Afkeuringscode toevoegen</th>
+    </tr>
+
+    {% for Bestelregel in Bestelregels %}
+
+        <tr>
+          <td>{{Bestelregel.bestelordernummer}}</td>
+          <td style="width: 10%">{{Bestelregel.artikelnummer}}</td>
+          <td>
+          {% for Artikel in Artikelen %}
+          {% if Bestelregel.artikelnummer.artikelnummer == Artikel.artikelnummer %}
+          <p> {{Artikel.omschrijving}} </p>
+          {% endif %}
+          {% endfor %}
+          </td>
+
+          <td>
+            {% for Bestelopdracht in Bestelopdrachten %}
+            {% if Bestelregel.bestelordernummer.bestelordernummer == Bestelopdracht.bestelordernummer %}
+            {{Bestelregel.bestelordernummer.naamLeverancier}}
+            {% endif %}
+            {% endfor %}
+          </td>
+
+          <td>{{Bestelregel.aantal}}</td>
+          <td>{{Bestelregel.afkeuringscode}}</td>
+          <td>
+            {% if Bestelregel.afgekeurd == "1" %}
+            <p>Ja</p>
+            {% else %}
+            <p>Nee</p>
+            {% endif %}
+        </td>
+          <td><a href="{{ path('afkeuringscodeToewijzen',{'id':Bestelregel.id}) }}"><i class="fa fa-gift fa-fw"></i>Afkeuringscode toewijzen</a></td>
+          </tr>
+      {% endfor %}
+
+</table>
+</div>
+</div>
+</div>
+
+{% endblock %}

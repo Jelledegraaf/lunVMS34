@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+<h3>Artikelen overzicht</h3>
+</div>
+<div class="panel-body">
+<div class="table-responsive">
+<table class="table table-striped">
+    <tr>
+        <th>Artikel nummer</th>
+        <th>Productnaam</th>
+        <th>Technische Specificaties</th>
+        <th>Magazijn Locatie</th>
+        <th>Inkoopprijs</th>
+        <th>Vervangend Artikel</th>
+        <th>Minimum Voorraad</th>
+        <th>Voorraad</th>
+        <th>Bestelserie</th>
+        <th>Opties</th>
+    </tr>
+
+    {% for Artikel in Artikelen %}
+
+      <tr>
+          <td>{{ Artikel.artikelnummer }}</td>
+          <td>{{ Artikel.omschrijving }}</td>
+          <td>{{ Artikel.technischeSpecificaties }}</td>
+          <td>{{ Artikel.magazijnlocatie }}</td>
+          <td>{{ Artikel.inkoopprijs }}</td>
+          <td>{{ Artikel.artikelnummerVervanging }}</td>
+          <td>{{ Artikel.minimumvoorraad }}</td>
+          <td>{{ Artikel.voorraad }}</td>
+          {% if Artikel.minimumvoorraad - Artikel.voorraad > 0 %}
+          <td>{{ Artikel.minimumvoorraad - Artikel.voorraad }}</td>
+          {% else %}
+          <td> - </td>
+          {% endif %}
+
+          <td>
+            <a href="{{ path('wijzigArtikel', {'artikelnummer':Artikel.Artikelnummer}) }}"><i class="fa fa-edit fa-fw"></i>Wijzig artikel</a>
+        <br><a href="{{ path('wijzigMinVoorraad', {'artikelnummer':Artikel.Artikelnummer}) }}"><i class="fa fa-edit fa-fw"></i>Wijzig min voorraad</a></td>
+      </tr>
+
+    {% endfor %}
+
+</table>
+</div>
+</div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+<h3>Artikel toevoegen aan bestelling<h3>
+</div>
+<div class="panel-body">
+<form method="post" action="">
+    {{ form_widget(form) }}
+    <input class="btn btn-default" type="submit" value="Bestelregel toevoegen">
+    <input class="btn btn-default" type="button" onclick="javascript:history.back()" value="Annuleren">
+    <a href="{{ path('alleBestellingen') }}"> <input class="btn btn-default" type="button" value="Bestelling afronden"> </a> 
+</form>
+</div>
+</div>
+{% endblock %}

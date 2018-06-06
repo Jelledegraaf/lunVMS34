@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Lunenburg VMS{% endblock %}</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="{{ asset('css/metisMenu.min.css') }}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="{{ asset('css/morris.css') }}" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+      <div id="wrapper">
+
+             <!-- Navigation -->
+             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0" text-align="center">
+                 <div class="navbar-header">
+                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                         <span class="sr-only">Toggle navigation</span>
+                         <span class="icon-bar"></span>
+                         <span class="icon-bar"></span>
+                         <span class="icon-bar"></span>
+                     </button>
+                     <a class="navbar-brand" href="{{ path('homepage') }}"><img src="{{ asset('img/logo.png') }}" width="210" height="30" class="img-fluid" alt="Responsive image"> </a>
+                 </div>
+                 <!-- /.navbar-header -->
+
+                    {% block sidenav %}
+                    {{ include('sidenav.html.twig') }}
+                    {% endblock %}
+
+             <div id="page-wrapper">
+            {% block body %}{% endblock %}
+             </div>
+             <!-- /#page-wrapper -->
+         </div>
+         <!-- /#wrapper -->
+
+         <!-- jQuery -->
+             <script src="{{ asset('js/jquery.min.js') }}"></script>
+
+             <!-- Bootstrap Core JavaScript -->
+             <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+             <!-- Metis Menu Plugin JavaScript -->
+             <script src="{{ asset('js/metisMenu.min.js') }}"></script>
+
+             <!-- Morris Charts JavaScript -->
+             <script src="{{ asset('js/raphael.min.js') }}"></script>
+             <script src="{{ asset('js/morris.min.js') }}"></script>
+             <script src="{{ asset('js/morris-data.js') }}"></script>
+
+             <!-- Custom Theme JavaScript -->
+             <script src="{{ asset('js/sb-admin-2.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
