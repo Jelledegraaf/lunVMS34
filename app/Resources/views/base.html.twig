@@ -39,9 +39,19 @@
                  </div>
                  <!-- /.navbar-header -->
 
+                 <!-- Note #Yuri: If statement is niet meer nodig, je ziet alles nu sws pas als je bent ingelogd...
+                 Toch even laten staan, komt misschien van pas voor rol-specifieke melding -->
+                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    {% block usermenu %}
+                    {{ include('usermenu.html.twig') }}
+                    {% endblock %}
+                 {% endif %}
+
+
                     {% block sidenav %}
                     {{ include('sidenav.html.twig') }}
                     {% endblock %}
+
 
              <div id="page-wrapper">
             {% block body %}{% endblock %}
