@@ -37,8 +37,17 @@ class User implements UserInterface, \Serializable
     private $username;
 
     /**
+     * @Assert\Regex(
+     *  pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*(_|[^\w])).+/",
+     *  match=true,
+     *  message="Wachtwoord moet minsten 1 hoofdletter en 1 speciaal karakter hebben"
+     *  )
      * @Assert\NotBlank()
-     * @Assert\Length(max=4096)
+     * @Assert\Length(
+     *  max = 4096,
+     *  min = 8,
+     *  minMessage = "Wachtwoord moet minstens 8 karakters lang zijn"
+     *  )
      */
     private $plainPassword;
 
