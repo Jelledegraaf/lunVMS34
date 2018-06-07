@@ -50,7 +50,7 @@ class InkoperController extends Controller
            $em = $this->getDoctrine()->getManager();
            $em->persist($bestaandProduct);
            $em->flush();
-           return $this->redirect($this->generateurl("wijzigartikel", array("artikelnummer" => $bestaandProduct->getArtikelnummer())));
+           return $this->redirect($this->generateurl("wijzigArtikel", array("artikelnummer" => $bestaandProduct->getArtikelnummer())));
          }
 
        return new Response($this->renderView('formWijzigArtikel.html.twig', array('form' => $form->createView())));
