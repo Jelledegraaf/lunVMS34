@@ -206,4 +206,15 @@ class InkoperController extends Controller
 
         return new Response($this->render('formWijzigBestelregel.html.twig', array('form' => $form->createView())));
       }
-}
+      /**
+      * @Route ("/artikelen/onderminimumvoorraad", name="artikelonderminimumvoorraad")
+      */
+      public function artikelenOnderMinimumvoorraad(Request $request){
+      //$artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+      $em = $this->getDoctrine()->getManager();
+      $query = $em->createQuery('SELECT a FROM AppBundle:Artikel a WHERE a.voorraad < a.minimumVoorraad');
+      $artikelen = $query->getResult();
+
+      return new Response($this->render('minimumvoorraad.html.twig', array('artikelen' => $artikelen)));
+        }
+          }
