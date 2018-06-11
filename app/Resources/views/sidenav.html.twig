@@ -53,9 +53,13 @@
                     <li>
                         <a href="{{ path('goedgekeurdeBestellingen') }}"><i class="fa fa-list-alt fa-fw"></i>Ontvangen Goederen</a>
                     </li>
-                    <!--Link naar Overzicht Ontvangen-->
+                    <!--Link naar afgekeurde goederen zonder code-->
                     <li>
-                        <a href="{{ path('afgekeurdeBestellingen') }}"><i class="fa fa-list-alt fa-fw"></i>Afgekeurde Goederen</a>
+                        <a href="{{ path('afgekeurdeBestellingenZonderCode') }}"><i class="fa fa-list-alt fa-fw"></i>Afgekeurde Goederen zonder code</a>
+                    </li>
+                    <!--Link naar afgekeurde goederen met code-->
+                    <li>
+                        <a href="{{ path('afgekeurdeBestellingenMetCode') }}"><i class="fa fa-list-alt fa-fw"></i>Afgekeurde Goederen met code</a>
                     </li>
                 </ul>
             </li>

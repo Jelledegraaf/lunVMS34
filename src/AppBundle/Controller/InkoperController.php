@@ -178,6 +178,33 @@ class InkoperController extends Controller
         }
 
       /**
+      * @Route("/inkoper/ontvangenbestelregels/afgekeurdZonderCode", name="afgekeurdeBestellingenZonderCode")
+      */
+      public function afgekeurdeBestelregelsZonderCode(Request $request) {
+        $bestelregels = $this->getDoctrine()->getRepository("AppBundle:Bestelregel")->findBy(array('ontvangen' => 1, 'afgekeurd' => 1, 'afkeuringscode' => null));
+        $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+        $bestelopdrachten = $this->getDoctrine()->getRepository("AppBundle:Bestelopdracht")->findAll();
+
+
+        return new Response($this->render('AfgekeurdeBestellingen.html.twig', array ('Bestelregels' => $bestelregels, 'Artikelen' => $artikelen, 'Bestelopdrachten' => $bestelopdrachten)));
+        }
+
+      /**
+      * @Route("/inkoper/ontvangenbestelregels/afgekeurdMetCode", name="afgekeurdeBestellingenMetCode")
+      */
+      public function afgekeurdeBestelregelsMetCode(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery('SELECT b FROM AppBundle:Bestelregel b WHERE b.ontvangen=1 AND b.afgekeurd=1 AND b.afkeuringscode IS NOT NULL');
+        $bestelregels = $query->getResult();
+        $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+        $bestelopdrachten = $this->getDoctrine()->getRepository("AppBundle:Bestelopdracht")->findAll();
+
+
+        return new Response($this->render('AfgekeurdeBestellingen.html.twig', array ('Bestelregels' => $bestelregels, 'Artikelen' => $artikelen, 'Bestelopdrachten' => $bestelopdrachten)));
+        }
+
+      /**
       * @Route("/inkoper/ontvangenbestelregels/goedgekeurd", name="goedgekeurdeBestellingen")
       */
       public function goedgekeurdeBestelregels(Request $request) {
@@ -217,4 +244,4 @@ class InkoperController extends Controller
 
       return new Response($this->render('minimumvoorraad.html.twig', array('artikelen' => $artikelen)));
         }
-          }
+}
