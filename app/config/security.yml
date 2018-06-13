@@ -43,9 +43,15 @@ security:
                 path: /logout
                 target: /
 
+    role_hierarchy:
+        ROLE_BEHEERDER:       [ROLE_INKOPER, ROLE_MAGAZIJNMEESTER]
+        
     access_control:
         # require ROLE_ADMIN for /admin*
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/*, roles: ROLE_USER }
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/beheer/*, roles: ROLE_BEHEERDER }
+        - { path: ^/inkoper/*, roles: ROLE_INKOPER }
+        - { path: ^/magazijnmeester/*, roles: ROLE_MAGAZIJNMEESTER }
+        - { path: ^/*, roles: ROLE_USER }
         #- { path: ^/, roles: ROLE_ADMIN }
