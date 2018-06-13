@@ -25,7 +25,6 @@ class MagazijnmeesterController extends Controller
       $Artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
       $Bestelopdrachten = $this->getDoctrine()->getRepository("AppBundle:Bestelopdracht")->findAll();
 
-
       return new Response($this->render('NogTeOntvangen.html.twig', array ('Bestelregels' => $Bestelregels, 'Artikelen' => $Artikelen, 'Bestelopdrachten' => $Bestelopdrachten)));
       }
 
@@ -41,7 +40,18 @@ class MagazijnmeesterController extends Controller
           $em = $this->getDoctrine()->getManager();
           $em->persist($huidigBestelregel);
           $em->flush();
+
+      if($huidigBestelregel->getOntvangen() == 1 AND $huidigBestelregel->getAfgekeurd() == 0){
+        $artikelnummer = $huidigBestelregel->getArtikelnummer();
+        $huidigArtikel= $this->getDoctrine()->getRepository("AppBundle:Artikel")->find("$artikelnummer");
+        $aantal = $huidigBestelregel->getAantal();
+        $oudeVoorraad = $huidigArtikel->getVoorraad();
+        $huidigArtikel->setVoorraad($oudeVoorraad + $aantal);
+            $em->flush();
+        };
+
       return $this->redirect($this->generateurl("teOntvangenBestelregels"));
+
     }
 
       return new Response($this->render('formWijzigBestelregel.html.twig', array('form' => $form->createView())));
