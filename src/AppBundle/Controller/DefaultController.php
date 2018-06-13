@@ -43,4 +43,14 @@ class DefaultController extends Controller
     {
         return new Response('<html><body>Admin page!</body></html>');
     }
+
+    /**
+    * @Route ("/artikelen/alle", name="alleArtikelen")
+    */
+    public function alleArtikelen(Request $request){
+        $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
+
+        return new Response($this->render('AlleArtikelen.html.twig', array('Artikelen' => $artikelen)));
+      }
+
 }

@@ -13,6 +13,8 @@ use AppBundle\Form\Type\BestelOpdrachtType;
 use AppBundle\Form\Type\BestelregelType;
 use AppBundle\Form\Type\ArtikelType;
 use AppBundle\Form\Type\NieuwOntvangstType;
+use AppBundle\Form\Type\ArtikelZoeken;
+
 
 
 class MagazijnmeesterController extends Controller
@@ -56,4 +58,26 @@ class MagazijnmeesterController extends Controller
 
       return new Response($this->render('formWijzigBestelregel.html.twig', array('form' => $form->createView())));
     }
+
+    /**
+    * @Route("/magazijnmeester/artikel/zoeken", name="zoekenArtikel")
+    */
+    public function zoekArtikel(Request $request) {
+
+    //  $nieuwArtikel = new Artikel();
+      $form = $this->createForm(ArtikelZoeken::class);
+
+      $form->handleRequest($request);
+      if ($form->isSubmitted() && $form->isValid()) {
+          $artikel = $form->getData();
+
+          $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findBy(
+          array('omschrijving'=> $artikel->getOmschrijving())
+          );
+          return new Response($this->render('zoekresultaat.html.twig', array('Artikelen' => $artikelen)));
+        }
+
+
+        return new Response($this->render('zoekformulier.html.twig', array('form' => $form->createView())));
+      }
 }

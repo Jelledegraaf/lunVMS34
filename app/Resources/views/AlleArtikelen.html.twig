@@ -19,7 +19,9 @@
         <th>Minimum Voorraad</th>
         <th>Voorraad</th>
         <th>Bestelserie</th>
+        {% if is_granted('ROLE_INKOPER') %}
         <th>Opties</th>
+        {% endif %}
     </tr>
 
     {% for Artikel in Artikelen %}
@@ -39,9 +41,13 @@
           <td> - </td>
           {% endif %}
 
+      {% if is_granted('ROLE_INKOPER') %}
           <td>
             <a href="{{ path('wijzigArtikel', {'artikelnummer':Artikel.Artikelnummer}) }}"><i class="fa fa-edit fa-fw"></i>Wijzig artikel</a>
-        <br><a href="{{ path('wijzigMinVoorraad', {'artikelnummer':Artikel.Artikelnummer}) }}"><i class="fa fa-edit fa-fw"></i>Wijzig min voorraad</a></td>
+        <br><a href="{{ path('wijzigMinVoorraad', {'artikelnummer':Artikel.Artikelnummer}) }}"><i class="fa fa-edit fa-fw"></i>Wijzig min voorraad</a>
+      </td>
+      {% endif %}
+
       </tr>
 
     {% endfor %}

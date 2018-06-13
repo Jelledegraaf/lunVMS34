@@ -16,17 +16,24 @@
                         <a href="{{ path('alleArtikelen') }}"><i class="fa fa-list-alt fa-fw"></i>Overzicht Artikelen</a>
                     </li>
                     <!--Link naar Nieuwe Bestelling-->
+                    {% if is_granted('ROLE_INKOPER') %}
                     <li>
                         <a href="{{ path('nieuwArtikel') }}"><i class="fa fa-tag fa-fw"></i>Nieuw Artikel</a>
                     </li>
+                    {% endif %}
+
                     <!--Link naar Minimum Voorraad-->
+                  {% if is_granted('ROLE_INKOPER') %}
                   <li>
                       <a href="{{ path('artikelonderminimumvoorraad') }}"><i class="fa fa-exclamation-circle fa-fw"></i>Artikelen onder Minimumvoorraad</a>
                   </li>
+                  {% endif %}
+
                 </ul>
             </li>
 
             <!--Kopje Bestellingen-->
+            {% if is_granted('ROLE_INKOPER') %}
             <li>
                 <a href="#"><i class="fa fa-book fa-fw"></i> Bestellingen<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
@@ -40,31 +47,42 @@
                     </li>
                 </ul>
             </li>
+            {% endif %}
+
 
             <!--Kopje Ontvangst-->
             <li>
                 <a href="#"><i class="fa fa-truck fa-fw"></i>Ontvangst<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <!--Link naar Overzicht Nog te ontvangen-->
+                    {% if is_granted('ROLE_MAGAZIJNMEESTER') %}
                     <li>
                         <a href="{{ path('teOntvangenBestelregels') }}"><i class="fa fa-list-alt fa-fw"></i>Nog te ontvangen</a>
                     </li>
+                    {% endif %}
                     <!--Link naar goedgekeurde bestellingen-->
+                    {% if is_granted('ROLE_INKOPER') %}
                     <li>
                         <a href="{{ path('goedgekeurdeBestellingen') }}"><i class="fa fa-list-alt fa-fw"></i>Ontvangen Goederen</a>
                     </li>
+                    {% endif %}
                     <!--Link naar afgekeurde goederen zonder code-->
+                    {% if is_granted('ROLE_INKOPER') %}
                     <li>
                         <a href="{{ path('afgekeurdeBestellingenZonderCode') }}"><i class="fa fa-list-alt fa-fw"></i>Afgekeurde Goederen zonder code</a>
                     </li>
+                    {% endif %}
                     <!--Link naar afgekeurde goederen met code-->
+                    {% if is_granted('ROLE_INKOPER') %}
                     <li>
                         <a href="{{ path('afgekeurdeBestellingenMetCode') }}"><i class="fa fa-list-alt fa-fw"></i>Afgekeurde Goederen met code</a>
                     </li>
+                    {% endif %}
                 </ul>
             </li>
 
             <!--Kopje Beheer-->
+            {% if is_granted('ROLE_BEHEERDER') %}
             <li>
                 <a href="#"><i class="fa fa-gear fa-fw"></i>Beheer<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
@@ -74,11 +92,15 @@
                     </li>
                 </ul>
             </li>
+            {% endif %}
 
             <!--Kopje zoekenartikel-->
+          {% if is_granted('ROLE_MAGAZIJNMEESTER') %}
           <li>
               <a href="{{ path('zoekenArtikel') }}"><i class="fa fa-search fa-fw"></i>Zoeken<span class="fa arrow"></span></a>
           </li>
+         {% endif %}
+
 
         </ul>
     </div>

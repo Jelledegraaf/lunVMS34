@@ -76,38 +76,6 @@ class InkoperController extends Controller
     }
 
 
-    /**
-    * @Route ("/inkoper/artikelen/alle", name="alleArtikelen")
-    */
-    public function alleArtikelen(Request $request){
-        $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
-
-        return new Response($this->render('AlleArtikelen.html.twig', array('Artikelen' => $artikelen)));
-      }
-
-
-    /**
-    * @Route("/inkoper/artikel/zoeken", name="zoekenArtikel")
-    */
-    public function zoekArtikel(Request $request) {
-
-    //  $nieuwArtikel = new Artikel();
-      $form = $this->createForm(ArtikelZoeken::class);
-
-      $form->handleRequest($request);
-      if ($form->isSubmitted() && $form->isValid()) {
-          $artikel = $form->getData();
-
-          $artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findBy(
-          array('omschrijving'=> $artikel->getOmschrijving())
-          );
-          return new Response($this->render('zoekresultaat.html.twig', array('Artikelen' => $artikelen)));
-        }
-
-
-        return new Response($this->render('zoekformulier.html.twig', array('form' => $form->createView())));
-      }
-
       /**
       * @Route("/inkoper/bestelopdracht/nieuw", name="bestelopdrachtNieuw")
       */
@@ -234,7 +202,7 @@ class InkoperController extends Controller
         return new Response($this->render('formWijzigBestelregel.html.twig', array('form' => $form->createView())));
       }
       /**
-      * @Route ("/artikelen/onderminimumvoorraad", name="artikelonderminimumvoorraad")
+      * @Route ("/inkoper/onderminimumvoorraad", name="artikelonderminimumvoorraad")
       */
       public function artikelenOnderMinimumvoorraad(Request $request){
       //$artikelen = $this->getDoctrine()->getRepository("AppBundle:Artikel")->findAll();
