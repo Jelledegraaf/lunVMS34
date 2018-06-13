@@ -28,9 +28,8 @@ class UserType extends AbstractType
                 'label' => 'Gebruikersnaam'))
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
-                'first_options'  => array('label' => 'Password'),
-                'second_options' => array('label' => 'Repeat Password'),
-                'label' => 'Wachtwoord'))
+                'first_options'  => array('label' => 'Wachtwoord'),
+                'second_options' => array('label' => 'Herhaal Wachtwoord')))
             ->add('roles', ChoiceType::class,[
                 'multiple' => true,
                 'expanded' => true, // render check-boxes
@@ -40,7 +39,7 @@ class UserType extends AbstractType
                      'Inkoper' => 'ROLE_INKOPER',
                      'Magazijnmeester' => 'ROLE_MAGAZIJNMEESTER',
                      'Gebruiker' => 'ROLE_USER',
-                    ], 
+                    ],
                 'label' => 'Rollen',
                 ])
         ;
