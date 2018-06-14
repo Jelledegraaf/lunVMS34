@@ -7,9 +7,11 @@
 <h1>Home - Lunenburg VMS<h1>
 </div>
 <div class="panel-body">
+{% if is_granted('ROLE_INKOPER') %}
 <h2 style="color:red;">
   {{ melding }}
 </h2>
+{% endif %}
   <p>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ullamcorper posuere tincidunt. Ut a mauris eu ante sagittis interdum ut sit amet dui. Vestibulum a sem feugiat, fringilla sapien sit amet, hendrerit metus. Vivamus euismod nunc sed semper vulputate. Aliquam quis urna dui. Integer vel molestie quam. Maecenas in enim et velit mollis malesuada ut vitae nisl. Vivamus sed pharetra tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus venenatis magna vitae condimentum aliquet. Proin ut consequat risus, et fermentum massa. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
 </p>
